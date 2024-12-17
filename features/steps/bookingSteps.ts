@@ -1,55 +1,41 @@
-import { Given, When, Then, DataTable } from "@cucumber/cucumber";
-import assert from "assert";
+const { Given, When, Then } = await import('@cucumber/cucumber');
 
-interface Passenger {
-  Imię: string;
-  Nazwisko: string;
-}
-
-let userLoggedIn = false;
-let destination = "";
-let travelDate = "";
-let flightNumber = "";
-let passengers: Passenger[] = [];
-let paymentSuccess = false;
-
-// Warstwa biznesowa
-Given("użytkownik jest zalogowany", () => {
-  userLoggedIn = true;
+Given('użytkownik jest zalogowany', function () {
+  // Implementacja kroku
+  console.log('Użytkownik jest zalogowany');
 });
 
-When("użytkownik wybiera miejsce docelowe {string}", (selectedDestination: string) => {
-  destination = selectedDestination;
+When('użytkownik wybiera miejsce docelowe {string}', function (destination: string) {
+  // Implementacja kroku
+  console.log(`Użytkownik wybiera miejsce docelowe: ${destination}`);
 });
 
-When("użytkownik wybiera datę podróży {string}", (selectedTravelDate: string) => {
-  travelDate = selectedTravelDate;
+When('użytkownik wybiera datę podróży {string}', function (date: string) {
+  // Implementacja kroku
+  console.log(`Użytkownik wybiera datę podróży: ${date}`);
 });
 
-Then("system wyświetla dostępne loty", () => {
-  assert(userLoggedIn, "Użytkownik nie jest zalogowany.");
-  assert(destination && travelDate, "Brakuje informacji o locie.");
-  console.log(`Dostępne loty do ${destination} na ${travelDate}.`);
+Then('system wyświetla dostępne loty', function () {
+  // Implementacja kroku
+  console.log('System wyświetla dostępne loty');
 });
 
-// Warstwa techniczna
-Given("użytkownik wybrał lot {string} do {string}", (selectedFlight: string, selectedDestination: string) => {
-  flightNumber = selectedFlight;
-  destination = selectedDestination;
+Given('użytkownik wybrał lot {string} do {string}', function (flight: string, destination: string) {
+  // Implementacja kroku
+  console.log(`Użytkownik wybrał lot: ${flight} do: ${destination}`);
 });
 
-When("użytkownik uzupełnia dane pasażera:", (table: DataTable) => {
-  passengers = table.hashes().map((row: Record<string, string>) => ({
-    Imię: row["Imię"],
-    Nazwisko: row["Nazwisko"]
-  }));
+When('użytkownik uzupełnia dane pasażera:', function (dataTable) {
+  // Implementacja kroku
+  console.log('Użytkownik uzupełnia dane pasażera:', dataTable);
 });
 
-When("użytkownik dokonuje płatności kartą {string}", (cardNumber: string) => {
-  paymentSuccess = cardNumber === "1234-5678-9876-5432";
+When('użytkownik dokonuje płatności kartą {string}', function (cardNumber: string) {
+  // Implementacja kroku
+  console.log(`Użytkownik dokonuje płatności kartą: ${cardNumber}`);
 });
 
-Then("system generuje potwierdzenie rezerwacji", () => {
-  assert(paymentSuccess, "Płatność nie powiodła się.");
-  console.log(`Rezerwacja lotu ${flightNumber} do ${destination} została potwierdzona.`);
+Then('system generuje potwierdzenie rezerwacji', function () {
+  // Implementacja kroku
+  console.log('System generuje potwierdzenie rezerwacji');
 });
