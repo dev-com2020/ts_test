@@ -16,8 +16,11 @@
     "@cucumber/cucumber": "^11.1.1",
     "@types/node": "^18.11.18",
     "assert": "^2.1.0",
-    "cucumber-html-reporter": "^7.2.0",
+    "cucumber-html-reporter": "^6.0.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.1.6"
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "easy-bdd-tool-jest": "^1.0.4"
   }
 }
