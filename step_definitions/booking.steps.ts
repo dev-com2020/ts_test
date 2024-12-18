@@ -33,7 +33,10 @@ When('użytkownik wybiera datę podróży {string}', function (date: string) {
 });
 
 Then('system wyświetla dostępne loty', function () {
-  assert(selectedFlight !== undefined, 'Brak dostępnych lotów.');
+  assert(
+    selectedFlight !== undefined && selectedFlight.availableSeats > 0,
+    'Brak dostępnych lotów.'
+  );
 });
 
 When('użytkownik wybrał lot {string} do {string}', function (flightNumber: string, destination: string) {
@@ -48,6 +51,7 @@ When('użytkownik uzupełnia dane pasażera:', function (dataTable: { raw: () =>
 });
 
 When('użytkownik dokonuje płatności kartą {string}', function (paymentCard: string) {
+  console.log("Wybrany lot:", selectedFlight);
   if (selectedFlight && selectedFlight.availableSeats > 0) {
     confirmationCode = `CONF-${Date.now()}`;
     selectedFlight.availableSeats--;

@@ -24,7 +24,7 @@ let confirmationCode;
     }
 });
 (0, cucumber_1.Then)('system wyświetla dostępne loty', function () {
-    (0, assert_1.default)(selectedFlight !== undefined, 'Brak dostępnych lotów.');
+    (0, assert_1.default)(selectedFlight !== undefined && selectedFlight.availableSeats > 0, 'Brak dostępnych lotów.');
 });
 (0, cucumber_1.When)('użytkownik wybrał lot {string} do {string}', function (flightNumber, destination) {
     selectedFlight = availableFlights.find(flight => flight.flightNumber === flightNumber && flight.destination === destination);

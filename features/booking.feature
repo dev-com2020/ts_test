@@ -10,7 +10,7 @@ Feature: Rezerwacja lotów
 
     # Warstwa techniczna
     Scenario: Użytkownik rezerwuje lot
-        Given użytkownik wybrał lot "Lot 1234" do "Nowy Jork"
+        Given użytkownik wybrał lot "1234" do "Nowy Jork"
         When użytkownik uzupełnia dane pasażera:
             | Imię | Nazwisko |
             | Jan  | Kowalski |
